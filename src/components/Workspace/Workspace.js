@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import ImageEditingToolbar from './ImageEditingToolbar';
 import './Workspace.css';
+import { ImageContext } from '../../context/ImageContext';
 
 const Workspace = () => {
+  const { imageSrc } = useContext(ImageContext);
+
   return (
     <main className="workspace">
       <div className="workspace-header">
@@ -33,28 +36,32 @@ const Workspace = () => {
       </div>
       
       <div className="upload-area">
-        <div className="upload-content">
-          <div className="upload-icon">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <polyline points="17 8 12 3 7 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <line x1="12" y1="3" x2="12" y2="15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+        {imageSrc ? (
+          <img src={imageSrc} alt="Uploaded" className="workspace-image" />
+        ) : (
+          <div className="upload-content">
+            <div className="upload-icon">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <polyline points="17 8 12 3 7 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <line x1="12" y1="3" x2="12" y2="15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <h2>Upload Medical Image</h2>
+            <p>Drag and drop your X-ray, MRI, or CT scan here, or click to browse</p>
+            <div className="supported-formats">
+              <span>Supported formats: JPEG, PNG, DICOM, TIFF</span>
+            </div>
+            <button className="upload-button">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <polyline points="17 8 12 3 7 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <line x1="12" y1="3" x2="12" y2="15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              Select Image
+            </button>
           </div>
-          <h2>Upload Medical Image</h2>
-          <p>Drag and drop your X-ray, MRI, or CT scan here, or click to browse</p>
-          <div className="supported-formats">
-            <span>Supported formats: JPEG, PNG, DICOM, TIFF</span>
-          </div>
-          <button className="upload-button">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <polyline points="17 8 12 3 7 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <line x1="12" y1="3" x2="12" y2="15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            Select Image
-          </button>
-        </div>
+        )}
       </div>
       
       <ImageEditingToolbar />

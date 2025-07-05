@@ -150,3 +150,9 @@
 .upload-icon svg {
   animation: float 3s ease-in-out infinite;
 }
+
+.workspace-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}

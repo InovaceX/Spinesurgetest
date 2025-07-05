@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './ActionPopups.css';
+import { ImageContext } from '../../context/ImageContext';
 
 const ActionPopups = ({ activePopup, setActivePopup }) => {
-  const [importSettings, setImportSettings] = useState({
-    autoDetect: true,
-    enhance: true,
-    batch: false
-  });
+const [importSettings, setImportSettings] = useState({
+  autoDetect: true,
+  enhance: true,
+  batch: false
+});
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const { setImageSrc } = useContext(ImageContext);
   
   const [exportSettings, setExportSettings] = useState({
     format: 'pdf',
@@ -30,8 +35,17 @@ const ActionPopups = ({ activePopup, setActivePopup }) => {
   const closePopup = () => setActivePopup(null);
 
   const handleImport = () => {
-    console.log('Import with settings:', importSettings);
-    closePopup();
+    if (selectedFile) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImageSrc(reader.result);
+        closePopup();
+      };
+      reader.readAsDataURL(selectedFile);
+    } else {
+      console.log('Import with settings:', importSettings);
+      closePopup();
+    }
   };
 
   const handleExport = () => {
@@ -56,7 +70,7 @@ const ActionPopups = ({ activePopup, setActivePopup }) => {
               hidden 
               accept=".dcm,.jpg,.jpeg,.png,.tiff,.tif"
               multiple
-              onChange={(e) => console.log('Files selected:', e.target.files)}
+              onChange={(e) => setSelectedFile(e.target.files[0])}
             />
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
