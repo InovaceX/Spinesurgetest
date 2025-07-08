@@ -5,7 +5,7 @@ import ActionButtons from './ActionButtons';
 import ActionPopups from './ActionPopups';
 import './Header.css';
 
-const Header = ({ darkMode, setDarkMode }) => {
+const Header = ({ darkMode, setDarkMode, onToolSelect, selectedTool }) => {
   const [activePopup, setActivePopup] = useState(null);
 
   return (
@@ -20,7 +20,7 @@ const Header = ({ darkMode, setDarkMode }) => {
               <path d="M12 8v8M8 12h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
-          <Navigation />
+          <Navigation onToolSelect={onToolSelect} selectedTool={selectedTool} />
         </div>
         
         {/* Right section - Action buttons */}

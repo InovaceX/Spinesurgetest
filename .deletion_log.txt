@@ -1,0 +1,8 @@
+Files deleted for decluttering on 2025-07-08:
+- src/components/Workspace/ImageEditingToolbar_old.js
+- src/components/Workspace/ImageEditingToolbar_old.css
+- src/components/Workspace/ImageEditingToolbar_new.js
+- src/components/Workspace/ImageEditingToolbar_new.css
+- src/App.zip
+- src/logo.png.png
+- src/logo.png.svg

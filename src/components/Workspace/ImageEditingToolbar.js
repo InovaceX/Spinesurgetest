@@ -1,12 +1,42 @@
 import React, { useState } from 'react';
 import './ImageEditingToolbar.css';
 
-const ImageEditingToolbar = () => {
+const ImageEditingToolbar = ({ imageControls }) => {
   const [hoveredTool, setHoveredTool] = useState(null);
-  const [brightness, setBrightness] = useState(50);
-  const [contrast, setContrast] = useState(50);
-  const [saturation, setSaturation] = useState(50);
-  const [activeValues, setActiveValues] = useState({});
+  const [brightness, setBrightness] = useState(100);
+  const [contrast, setContrast] = useState(100);
+  const [saturation, setSaturation] = useState(100);
+
+  // Sync local state with image controls
+  const handleBrightnessChange = (value) => {
+    setBrightness(value);
+    if (imageControls?.setBrightness) {
+      imageControls.setBrightness(value);
+    }
+  };
+
+  const handleContrastChange = (value) => {
+    setContrast(value);
+    if (imageControls?.setContrast) {
+      imageControls.setContrast(value);
+    }
+  };
+
+  const handleSaturationChange = (value) => {
+    setSaturation(value);
+    if (imageControls?.setSaturation) {
+      imageControls.setSaturation(value);
+    }
+  };
+
+  const handleResetAll = () => {
+    setBrightness(100);
+    setContrast(100);
+    setSaturation(100);
+    if (imageControls?.resetAll) {
+      imageControls.resetAll();
+    }
+  };
 
   const tools = [
     {
@@ -27,9 +57,9 @@ const ImageEditingToolbar = () => {
       label: 'Brightness',
       type: 'slider',
       value: brightness,
-      setValue: setBrightness,
+      setValue: handleBrightnessChange,
       min: 0,
-      max: 100,
+      max: 200,
       unit: '%'
     },
     {
@@ -43,9 +73,9 @@ const ImageEditingToolbar = () => {
       label: 'Contrast',
       type: 'slider',
       value: contrast,
-      setValue: setContrast,
+      setValue: handleContrastChange,
       min: 0,
-      max: 100,
+      max: 200,
       unit: '%'
     },
     {
@@ -60,9 +90,9 @@ const ImageEditingToolbar = () => {
       label: 'Saturation',
       type: 'slider',
       value: saturation,
-      setValue: setSaturation,
+      setValue: handleSaturationChange,
       min: 0,
-      max: 100,
+      max: 200,
       unit: '%'
     },
     {
@@ -75,7 +105,7 @@ const ImageEditingToolbar = () => {
       ),
       label: 'Rotate Left',
       type: 'action',
-      action: () => console.log('Rotate left')
+      action: () => imageControls?.rotateLeft && imageControls.rotateLeft()
     },
     {
       id: 'rotate-right',
@@ -87,7 +117,7 @@ const ImageEditingToolbar = () => {
       ),
       label: 'Rotate Right',
       type: 'action',
-      action: () => console.log('Rotate right')
+      action: () => imageControls?.rotateRight && imageControls.rotateRight()
     },
     {
       id: 'flip-h',
@@ -100,7 +130,7 @@ const ImageEditingToolbar = () => {
       ),
       label: 'Flip Horizontal',
       type: 'action',
-      action: () => console.log('Flip horizontal')
+      action: () => imageControls?.flipHorizontal && imageControls.flipHorizontal()
     },
     {
       id: 'zoom-in',
@@ -114,7 +144,7 @@ const ImageEditingToolbar = () => {
       ),
       label: 'Zoom In',
       type: 'action',
-      action: () => console.log('Zoom in')
+      action: () => imageControls?.zoomIn && imageControls.zoomIn()
     },
     {
       id: 'zoom-out',
@@ -127,7 +157,7 @@ const ImageEditingToolbar = () => {
       ),
       label: 'Zoom Out',
       type: 'action',
-      action: () => console.log('Zoom out')
+      action: () => imageControls?.zoomOut && imageControls.zoomOut()
     },
     {
       id: 'reset',
@@ -141,11 +171,7 @@ const ImageEditingToolbar = () => {
       ),
       label: 'Reset All',
       type: 'action',
-      action: () => {
-        setBrightness(50);
-        setContrast(50);
-        setSaturation(50);
-      }
+      action: handleResetAll
     }
   ];
 
