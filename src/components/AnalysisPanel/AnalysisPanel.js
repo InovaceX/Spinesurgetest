@@ -4,7 +4,11 @@ import Measurements from './Measurements';
 import AnalysisSummary from './AnalysisSummary';
 import './AnalysisPanel.css';
 
+<<<<<<< HEAD
 const AnalysisPanel = ({ toolResults = [] }) => {
+=======
+const AnalysisPanel = () => {
+>>>>>>> 6780040092ba58fa4421663a4ecf5f61837205b0
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const togglePanel = () => {
@@ -38,9 +42,15 @@ const AnalysisPanel = ({ toolResults = [] }) => {
         
         {!isCollapsed && (
           <div className="panel-content">
+<<<<<<< HEAD
             <SpinalParameters toolResults={toolResults} />
             <Measurements toolResults={toolResults} />
             <AnalysisSummary toolResults={toolResults} />
+=======
+            <SpinalParameters />
+            <Measurements />
+            <AnalysisSummary />
+>>>>>>> 6780040092ba58fa4421663a4ecf5f61837205b0
           </div>
         )}
       </aside>

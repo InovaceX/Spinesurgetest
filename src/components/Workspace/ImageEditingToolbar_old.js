@@ -1,57 +1,18 @@
 import React, { useState } from 'react';
 import './ImageEditingToolbar.css';
 
-<<<<<<< HEAD
-const ImageEditingToolbar = ({ imageControls }) => {
-  const [hoveredTool, setHoveredTool] = useState(null);
-  const [brightness, setBrightness] = useState(100);
-  const [contrast, setContrast] = useState(100);
-  const [saturation, setSaturation] = useState(100);
-
-  // Sync local state with image controls
-  const handleBrightnessChange = (value) => {
-    setBrightness(value);
-    if (imageControls?.setBrightness) {
-      imageControls.setBrightness(value);
-    }
-  };
-
-  const handleContrastChange = (value) => {
-    setContrast(value);
-    if (imageControls?.setContrast) {
-      imageControls.setContrast(value);
-    }
-  };
-
-  const handleSaturationChange = (value) => {
-    setSaturation(value);
-    if (imageControls?.setSaturation) {
-      imageControls.setSaturation(value);
-    }
-  };
-
-  const handleResetAll = () => {
-    setBrightness(100);
-    setContrast(100);
-    setSaturation(100);
-    if (imageControls?.resetAll) {
-      imageControls.resetAll();
-    }
-  };
-=======
 const ImageEditingToolbar = () => {
   const [hoveredTool, setHoveredTool] = useState(null);
   const [brightness, setBrightness] = useState(50);
   const [contrast, setContrast] = useState(50);
   const [saturation, setSaturation] = useState(50);
   const [activeValues, setActiveValues] = useState({});
->>>>>>> 6780040092ba58fa4421663a4ecf5f61837205b0
 
   const tools = [
     {
       id: 'brightness',
       icon: (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
           <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="2"/>
           <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" strokeWidth="2"/>
           <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" strokeWidth="2"/>
@@ -66,21 +27,15 @@ const ImageEditingToolbar = () => {
       label: 'Brightness',
       type: 'slider',
       value: brightness,
-<<<<<<< HEAD
-      setValue: handleBrightnessChange,
-      min: 0,
-      max: 200,
-=======
       setValue: setBrightness,
       min: 0,
       max: 100,
->>>>>>> 6780040092ba58fa4421663a4ecf5f61837205b0
       unit: '%'
     },
     {
       id: 'contrast',
       icon: (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
           <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
           <path d="M12 2a10 10 0 0 0 0 20" fill="currentColor"/>
         </svg>
@@ -88,21 +43,15 @@ const ImageEditingToolbar = () => {
       label: 'Contrast',
       type: 'slider',
       value: contrast,
-<<<<<<< HEAD
-      setValue: handleContrastChange,
-      min: 0,
-      max: 200,
-=======
       setValue: setContrast,
       min: 0,
       max: 100,
->>>>>>> 6780040092ba58fa4421663a4ecf5f61837205b0
       unit: '%'
     },
     {
       id: 'saturation',
       icon: (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
           <path d="M12 3a9 9 0 0 1 6.36 15.36" stroke="currentColor" strokeWidth="2"/>
           <path d="M5.64 18.36A9 9 0 0 1 12 3" stroke="currentColor" strokeWidth="2"/>
           <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2"/>
@@ -111,53 +60,39 @@ const ImageEditingToolbar = () => {
       label: 'Saturation',
       type: 'slider',
       value: saturation,
-<<<<<<< HEAD
-      setValue: handleSaturationChange,
-      min: 0,
-      max: 200,
-=======
       setValue: setSaturation,
       min: 0,
       max: 100,
->>>>>>> 6780040092ba58fa4421663a4ecf5f61837205b0
       unit: '%'
     },
     {
       id: 'rotate-left',
       icon: (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
           <path d="M1 4v6h6" stroke="currentColor" strokeWidth="2"/>
           <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" stroke="currentColor" strokeWidth="2"/>
         </svg>
       ),
       label: 'Rotate Left',
       type: 'action',
-<<<<<<< HEAD
-      action: () => imageControls?.rotateLeft && imageControls.rotateLeft()
-=======
       action: () => console.log('Rotate left')
->>>>>>> 6780040092ba58fa4421663a4ecf5f61837205b0
     },
     {
       id: 'rotate-right',
       icon: (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
           <path d="M23 4v6h-6" stroke="currentColor" strokeWidth="2"/>
           <path d="M20.49 15a9 9 0 1 1-2.13-9.36L23 10" stroke="currentColor" strokeWidth="2"/>
         </svg>
       ),
       label: 'Rotate Right',
       type: 'action',
-<<<<<<< HEAD
-      action: () => imageControls?.rotateRight && imageControls.rotateRight()
-=======
       action: () => console.log('Rotate right')
->>>>>>> 6780040092ba58fa4421663a4ecf5f61837205b0
     },
     {
       id: 'flip-h',
       icon: (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
           <path d="M8 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h3" stroke="currentColor" strokeWidth="2"/>
           <path d="M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3" stroke="currentColor" strokeWidth="2"/>
           <path d="M12 20v2M12 14v2M12 8v2M12 2v2" stroke="currentColor" strokeWidth="2"/>
@@ -165,16 +100,12 @@ const ImageEditingToolbar = () => {
       ),
       label: 'Flip Horizontal',
       type: 'action',
-<<<<<<< HEAD
-      action: () => imageControls?.flipHorizontal && imageControls.flipHorizontal()
-=======
       action: () => console.log('Flip horizontal')
->>>>>>> 6780040092ba58fa4421663a4ecf5f61837205b0
     },
     {
       id: 'zoom-in',
       icon: (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
           <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="2"/>
           <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="2"/>
           <line x1="11" y1="8" x2="11" y2="14" stroke="currentColor" strokeWidth="2"/>
@@ -183,16 +114,12 @@ const ImageEditingToolbar = () => {
       ),
       label: 'Zoom In',
       type: 'action',
-<<<<<<< HEAD
-      action: () => imageControls?.zoomIn && imageControls.zoomIn()
-=======
       action: () => console.log('Zoom in')
->>>>>>> 6780040092ba58fa4421663a4ecf5f61837205b0
     },
     {
       id: 'zoom-out',
       icon: (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
           <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="2"/>
           <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="2"/>
           <line x1="8" y1="11" x2="14" y2="11" stroke="currentColor" strokeWidth="2"/>
@@ -200,16 +127,12 @@ const ImageEditingToolbar = () => {
       ),
       label: 'Zoom Out',
       type: 'action',
-<<<<<<< HEAD
-      action: () => imageControls?.zoomOut && imageControls.zoomOut()
-=======
       action: () => console.log('Zoom out')
->>>>>>> 6780040092ba58fa4421663a4ecf5f61837205b0
     },
     {
       id: 'reset',
       icon: (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
           <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" stroke="currentColor" strokeWidth="2"/>
           <path d="M21 3v5h-5" stroke="currentColor" strokeWidth="2"/>
           <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" stroke="currentColor" strokeWidth="2"/>
@@ -218,15 +141,11 @@ const ImageEditingToolbar = () => {
       ),
       label: 'Reset All',
       type: 'action',
-<<<<<<< HEAD
-      action: handleResetAll
-=======
       action: () => {
         setBrightness(50);
         setContrast(50);
         setSaturation(50);
       }
->>>>>>> 6780040092ba58fa4421663a4ecf5f61837205b0
     }
   ];
 
@@ -258,7 +177,11 @@ const ImageEditingToolbar = () => {
               </div>
               
               {isHovered && tool.type === 'slider' && (
-                <div className="tool-popup compact">
+                <div className="tool-popup">
+                  <div className="popup-header">
+                    <span className="tool-name">{tool.label}</span>
+                    <span className="tool-value">{tool.value}{tool.unit}</span>
+                  </div>
                   <div className="slider-container">
                     <input
                       type="range"
@@ -274,6 +197,12 @@ const ImageEditingToolbar = () => {
                         style={{ width: `${(tool.value - tool.min) / (tool.max - tool.min) * 100}%` }}
                       />
                     </div>
+                  </div>
+                  <div className="preset-values">
+                    <button onClick={() => tool.setValue(25)}>25%</button>
+                    <button onClick={() => tool.setValue(50)}>50%</button>
+                    <button onClick={() => tool.setValue(75)}>75%</button>
+                    <button onClick={() => tool.setValue(100)}>100%</button>
                   </div>
                 </div>
               )}

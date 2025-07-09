@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useMemo } from 'react';
 
 const AnalysisSummary = ({ toolResults = [] }) => {
@@ -44,6 +45,23 @@ const AnalysisSummary = ({ toolResults = [] }) => {
     };
   }, [toolResults]);
 
+=======
+import React, { useState } from 'react';
+
+const summaryData = {
+  totalMeasurements: 12,
+  parametersCalculated: 8,
+  accuracy: '96.5%',
+  lastUpdated: 'Today at 14:32',
+  status: 'Analysis Complete',
+  analysisTime: '2.3s',
+  imageQuality: 'Excellent'
+};
+
+const AnalysisSummary = () => {
+  const [expanded, setExpanded] = useState(true);
+
+>>>>>>> 6780040092ba58fa4421663a4ecf5f61837205b0
   return (
     <div className="panel-section">
       <div 
@@ -89,6 +107,7 @@ const AnalysisSummary = ({ toolResults = [] }) => {
           </div>
         </div>
         
+<<<<<<< HEAD
         <div className={`status-badge ${summaryData.status.toLowerCase().replace(' ', '-')}`}>
           {summaryData.status === 'Analysis Complete' && (
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -108,6 +127,13 @@ const AnalysisSummary = ({ toolResults = [] }) => {
               <path d="M8 12h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
             </svg>
           )}
+=======
+        <div className="status-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <polyline points="22 4 12 14.01 9 11.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+>>>>>>> 6780040092ba58fa4421663a4ecf5f61837205b0
           <span>{summaryData.status}</span>
         </div>
       </div>

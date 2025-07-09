@@ -407,6 +407,7 @@
   font-size: 14px;
 }
 
+<<<<<<< HEAD
 /* Status badge variants */
 .status-badge.analysis-complete {
   background: rgba(34, 197, 94, 0.1);
@@ -444,6 +445,8 @@
   color: var(--text-secondary);
 }
 
+=======
+>>>>>>> 6780040092ba58fa4421663a4ecf5f61837205b0
 /* Responsive Design */
 @media (max-width: 1400px) {
   .analysis-panel {

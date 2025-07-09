@@ -8,13 +8,17 @@ import './App.css';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
+<<<<<<< HEAD
   const [selectedTool, setSelectedTool] = useState(null);
   const [toolResults, setToolResults] = useState([]);
+=======
+>>>>>>> 6780040092ba58fa4421663a4ecf5f61837205b0
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
   }, [darkMode]);
 
+<<<<<<< HEAD
   const handleToolSelect = (toolName) => {
     setSelectedTool(toolName);
     console.log('Tool selected:', toolName);
@@ -39,6 +43,15 @@ function App() {
           onToolResults={handleToolResults}
         />
         <AnalysisPanel toolResults={toolResults} />
+=======
+  return (
+    <div className="app">
+      <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+      <div className="app-content">
+        <Sidebar />
+        <Workspace />
+        <AnalysisPanel />
+>>>>>>> 6780040092ba58fa4421663a4ecf5f61837205b0
       </div>
     </div>
   );

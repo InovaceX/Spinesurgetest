@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   background: #000000;
+<<<<<<< HEAD
   padding: 0;
   gap: 0;
   min-height: 0;
@@ -21,6 +22,10 @@
   height: 100%;
   width: 100%;
   position: relative; /* Ensure it fills parent */
+=======
+  padding: 24px;
+  gap: 20px;
+>>>>>>> 6780040092ba58fa4421663a4ecf5f61837205b0
 }
 
 .workspace-header {
@@ -78,7 +83,11 @@
   background: rgba(15, 23, 42, 0.5);
   transition: all 0.3s ease;
   position: relative;
+<<<<<<< HEAD
   min-height: 0 !important; /* Remove any min-height if present */
+=======
+  min-height: 400px;
+>>>>>>> 6780040092ba58fa4421663a4ecf5f61837205b0
 }
 
 .upload-area:hover {
